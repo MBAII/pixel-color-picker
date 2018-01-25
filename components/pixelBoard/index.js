@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
 import Board from './Board';
 import Picker from './Picker';
+import { changeColor } from '../../actions/changeColor'
 
-
-class BoardPicker extends Component {
+export default class BoardPicker extends Component {
 
   constructor(props) {
     super(props);
     this.state = {
       length: 10,
     };
-    this.color = '#FF0000';
+    this.color = '#FFFFFF';
     this.handleChangeComplete = this.handleChangeComplete.bind(this);
     this.getColor = this.getColor.bind(this);
   }
@@ -33,6 +33,3 @@ class BoardPicker extends Component {
   }
 
 }
-
-
-export default BoardPicker;

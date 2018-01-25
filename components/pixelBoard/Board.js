@@ -36,7 +36,7 @@ class Board extends Component {
     for(var i = 0; i < this.state.length; i++) {
       for(var j = 0; j < this.state.length; j++) {
         var className = 'pixel' + i.toString() + j.toString()
-        pixels.push(<Pixel color='#FFFFFF' className = {className} key = {className} count={this.state.length} getColor={this.getColor}/>);
+        pixels.push(<Pixel x={j} y={i} color='#FFFFFF' className = {className} key = {className} count={this.state.length} getColor={this.getColor}/>);
       }
     }
     return pixels;
