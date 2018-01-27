@@ -1,6 +1,6 @@
-import { createDevTools } from 'redux-devtools'
-import LogMonitor from 'redux-devtools-log-monitor'
-import DockMonitor from 'redux-devtools-dock-monitor'
+// import { createDevTools } from 'redux-devtools'
+// import LogMonitor from 'redux-devtools-log-monitor'
+// import DockMonitor from 'redux-devtools-dock-monitor'
 
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
@@ -18,15 +18,15 @@ const reducer = combineReducers({
   routing: routerReducer
 })
 
-const DevTools = createDevTools(
-  <DockMonitor toggleVisibilityKey="ctrl-h" changePositionKey="ctrl-q">
-    <LogMonitor theme="tomorrow" preserveScrollTop={false} />
-  </DockMonitor>
-)
+// const DevTools = createDevTools(
+//   <DockMonitor toggleVisibilityKey="ctrl-h" changePositionKey="ctrl-q">
+//     <LogMonitor theme="tomorrow" preserveScrollTop={false} />
+//   </DockMonitor>
+// )
 
 const store = createStore(
-  reducer,
-  DevTools.instrument()
+  reducer
+  // DevTools.instrument()
 )
 const history = syncHistoryWithStore(browserHistory, store)
 
@@ -39,8 +39,8 @@ ReactDOM.render(
           <Route path="About" component={About}/>
         </Route>
       </Router>
-      <DevTools />
     </div>
   </Provider>,
   document.getElementById('mount')
 )
+// <DevTools />

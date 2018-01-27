@@ -6,8 +6,8 @@ class Board extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      length: 11,
-      width: window.innerWidth * 0.3,
+      length: this.props.length,
+      width: this.props.completed ? window.innerWidth * 0.2 : window.innerWidth * 0.4,
     };
     this.updateDimensions = this.updateDimensions.bind(this);
     this.getPixels = this.getPixels.bind(this);
@@ -16,7 +16,11 @@ class Board extends Component {
   }
 
   updateDimensions() {
-    this.setState({width: window.innerWidth * 0.3 });
+    if (this.props.completed === true) {
+      this.setState({width: window.innerWidth * 0.2 });
+    }else{
+      this.setState({width: window.innerWidth * 0.4 });
+    }
   }
 
   componentWillMount() {
@@ -55,10 +59,10 @@ class Board extends Component {
       <div
         className = "pixel-board"
         style = {{
-          width: this.state.width,
-          height: this.state.width,
+          width: this.props.completed ? this.state.width/2 : this.state.width,
+          height: this.props.completed ? this.state.width/2 : this.state.width,
           margin: "0 auto",
-          marginTop: "30px",
+          marginTop: "20px",
           borderStyle: 'solid',
           borderWidth: '1px',
         }}
