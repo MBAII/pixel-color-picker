@@ -10,8 +10,8 @@ import { Router, Route, IndexRoute, browserHistory } from 'react-router'
 import { syncHistoryWithStore, routerReducer } from 'react-router-redux'
 
 import * as reducers from './reducers'
-import { App, Home, Foo, Bar } from './components'
-import BoardPicker from './components/pixelBoard/index'
+import { App, About } from './components'
+import BoardPicker from './components/pixelBoard'
 
 const reducer = combineReducers({
   ...reducers,
@@ -35,10 +35,8 @@ ReactDOM.render(
     <div>
       <Router history={history}>
         <Route path="/" component={App}>
-          <IndexRoute component={Home}/>
-          <Route path="main" component={BoardPicker}/>
-          <Route path="foo" component={Foo}/>
-          <Route path="bar" component={Bar}/>
+          <IndexRoute component={BoardPicker}/>
+          <Route path="About" component={About}/>
         </Route>
       </Router>
       <DevTools />
