@@ -1,1 +1,0 @@
-export changeColor from './changeColor'

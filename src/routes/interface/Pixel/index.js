@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 import {bindActionCreators} from 'redux';
-import { changeColor } from '../../../actions/changeColor'
+import { updatePixel } from '../../../store/actions/board'
 import Component from './component';
 
 function mapStateToProps (state) {
@@ -11,7 +11,7 @@ function mapStateToProps (state) {
 
 function mapDispatchToProps (dispatch) {
   return bindActionCreators({
-    changeColor
+    updatePixel
   }, dispatch);
 }
 

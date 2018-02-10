@@ -39,8 +39,18 @@ class Board extends Component {
     var pixels = [];
     for(var i = 0; i < this.state.length; i++) {
       for(var j = 0; j < this.state.length; j++) {
-        var className = 'pixel' + i.toString() + j.toString()
-        pixels.push(<Pixel x={j} y={i} color='#FFFFFF' className = {className} key = {className} count={this.state.length} getColor={this.getColor}/>);
+        var className = 'pixel' + i.toString() + '-' + j.toString()
+        pixels.push(
+          <Pixel
+            x={j}
+            y={i}
+            color='#FFFFFF'
+            className = {className}
+            key = {className}
+            count={this.state.length}
+            getColor={this.getColor}
+          />
+        );
       }
     }
     return pixels;
@@ -58,14 +68,24 @@ class Board extends Component {
     return (
       <div
         className = "pixel-board"
-        style = {{
-          width: this.props.completed ? this.state.width/2 : this.state.width,
-          height: this.props.completed ? this.state.width/2 : this.state.width,
-          margin: "0 auto",
-          marginTop: "20px",
-          borderStyle: 'solid',
-          borderWidth: '1px',
-        }}
+        style = {
+          this.props.completed ?
+          {
+            width: '180px',
+            height: '180px',
+            margin: "0 auto",
+            marginTop: "200px",
+          }
+          :
+          {
+            width: this.state.width,
+            height: this.state.width,
+            margin: "0 auto",
+            marginTop: "20px",
+            borderStyle: 'solid',
+            borderWidth: '1px',
+          }
+        }
       >
         {this.getPixels()}
       </div>

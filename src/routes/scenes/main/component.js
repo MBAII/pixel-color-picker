@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import Board from './Board';
-import Picker from './Picker';
-import { changeColor } from '../../actions/changeColor'
+import Board from '../../interface/Board';
+import Picker from '../../interface/Picker';
+import whiteT from'../../assets/white.png';
 
 export default class BoardPicker extends Component {
 
@@ -33,10 +33,12 @@ export default class BoardPicker extends Component {
     return (
       <div className = "board-and-picker" style = {{textAlign: 'center', width: this.state.width, height: this.state.width, margin: "0 auto"}}>
         <Board length={this.state.length} completed = {this.state.completed} getColor={ this.getColor }/>
-        <Image
-          source={require('../../asset/white.png')}
-        />
-        <button style = {completeButtonStyle} onClick = { this.complete }>✔️</button>
+        <img src={whiteT} style = {tShirtImageStyle}/>
+        {this.state.completed ?
+          null
+          :
+          <button style = {completeButtonStyle} onClick = { this.complete }>✔️</button>
+        }
         {this.state.completed ?
           null
           :
@@ -56,4 +58,13 @@ const completeButtonStyle = {
   'color': 'white',
   'margin': '5px',
   'outline': 'none'
+}
+
+const tShirtImageStyle = {
+  'position': 'fixed',
+  'width': '600px',
+  'zIndex': '-1',
+  'left': '50%',
+  'marginLeft': '-300px',
+  'top': '80px'
 }

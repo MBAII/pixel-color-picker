@@ -29,7 +29,11 @@ export default class Pixel extends Component {
         e.preventDefault();
         var newColor = this.props.getColor();
         this.setState({color: newColor});
-        this.props.changeColor(this.props.x, this.props.y, newColor);
+        this.props.updatePixel({
+          x: this.props.x,
+          y: this.props.y,
+          newColor: newColor
+        });
       }}
       >
       </div>
