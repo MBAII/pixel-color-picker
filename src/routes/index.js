@@ -9,9 +9,6 @@ import App from './scenes/app';
 
 const Routes = () => (
 	<div>
-		<Link to="/Home">Home</Link>
-		<br></br>
-		<Link to="/About">About</Link>
 		<Switch>
 			<Route exact path="/" component={Main} />
 			<Route path="/Home" component={Main} />
