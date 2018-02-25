@@ -35,7 +35,8 @@ const pickerContainerStyle = {
   marginTop: '20px',
   position: 'fixed',
   left: '25%',
-  top: '460px'
+  top: '460px',
+  boxShadow: '-10px 10px 20px rgba(200, 200, 200, 0.8)'
 };
 
 export default Picker;

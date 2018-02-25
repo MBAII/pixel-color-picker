@@ -17,6 +17,7 @@ export default class BoardPicker extends Component {
     this.handleChangeComplete = this.handleChangeComplete.bind(this);
     this.getColor = this.getColor.bind(this);
     this.complete = this.complete.bind(this);
+    this.sendToServer = this.sendToServer.bind(this);
   }
 
   getColor(){
@@ -34,6 +35,10 @@ export default class BoardPicker extends Component {
     });
   }
 
+  sendToServer(){
+    this.props.submitOrder();
+  }
+
   render() {
     return (
       <main>
@@ -42,6 +47,8 @@ export default class BoardPicker extends Component {
           <Board length={this.state.length} firstRender={this.state.firstRender} completed = {this.state.completed} getColor={ this.getColor }/>
           <img src={whiteT} style = {tShirtImageStyle}/>
           <button style = {completeButtonStyle} onClick = { this.complete }>{this.state.completed ? 'edit':'done'}</button>
+          {this.state.completed &&
+            <button style = {sendButtonStyle} onClick = {this.sendToServer}> send </button> }
           <Picker firstRender={this.state.firstRender} open={!this.state.completed} handleChangeComplete={ this.handleChangeComplete }/>
         </div>
       </main>
@@ -61,6 +68,19 @@ const completeButtonStyle = {
   'position': 'fixed',
   'right': '10%',
   'top': '600px'
+}
+
+const sendButtonStyle = {
+  'width': '50px',
+  'height': '25px',
+  'zIndex': 1000,
+  'borderRadius': '10px',
+  'color': '#8BC34A',
+  'borderColor': '#8BC34A',
+  'margin': '5px',
+  'position': 'fixed',
+  'right': '10%',
+  'top': '630px'
 }
 
 const tShirtImageStyle = {

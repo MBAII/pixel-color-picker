@@ -2,8 +2,8 @@
 
 import {combineEpics} from 'redux-observable';
 
-import firstEpic from './firstEpic';
+import order from './order';
 
 export default combineEpics(
-  firstEpic
+  order
 );

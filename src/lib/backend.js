@@ -7,6 +7,8 @@ import {
   dataPostReq
 } from './backendUtils';
 
-export function fooAction() {
-  // return postReq('admin/dataMigration/validation.php', 'dataMigration', {placeHolder: ''});
+export function submitOrder(payload) {
+  console.log('Submit Order Request');
+  console.log('Order Detail', payload);
+  return postReq('http://localhost:3000/submit-order', payload);
 }

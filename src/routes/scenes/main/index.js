@@ -5,9 +5,9 @@ import {bindActionCreators} from 'redux';
 
 import Component from './component';
 
-// import {
-   // navToHome
-// } from '../../../store/actions/navigation';
+import {
+   submitOrder
+} from '../../../store/actions/order';
 
 function mapStateToProps (state) {
   return {
@@ -16,7 +16,7 @@ function mapStateToProps (state) {
 
 function mapDispatchToProps (dispatch) {
   return bindActionCreators({
-    // navToHome
+    submitOrder
   }, dispatch);
 }
 

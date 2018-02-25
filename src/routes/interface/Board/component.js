@@ -50,6 +50,7 @@ class Board extends Component {
             key = {className}
             count={this.state.length}
             getColor={this.getColor}
+            completed={this.props.completed}
           />
         );
       }
@@ -71,6 +72,7 @@ class Board extends Component {
         <div
           className = "pixel-board"
           style = {{
+              boxShadow: "-10px 10px 20px rgba(200, 200, 200, 0.8)",
               width: this.state.width,
               height: this.state.width,
               margin: "0 auto",
@@ -124,6 +126,7 @@ class Board extends Component {
           <div
             className = "pixel-board"
             style = {{
+                boxShadow: "-10px 10px 20px rgba(200, 200, 200, 0.8)",
                 width: interpolatingStyle.width,
                 height: interpolatingStyle.height,
                 margin: "0 auto",
