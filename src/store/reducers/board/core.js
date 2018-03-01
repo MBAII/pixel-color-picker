@@ -1,10 +1,8 @@
 'use strict';
 
 import {Record, List} from 'immutable';
-import {firstReducer} from './model';
-
-const N = 11;
+import {board} from './model';
 
 export const InitialState = Record({
-  board: Array.apply(null, {length: N}).map((a)=>Array.apply(null, {length: N}).map((o)=>'rgba(255, 255, 255, 1)'))
+  board: board
 });
