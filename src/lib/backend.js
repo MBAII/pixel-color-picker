@@ -7,8 +7,16 @@ import {
   dataPostReq
 } from './backendUtils';
 
-export function submitOrder(payload) {
-  console.log('Submit Order Request');
-  console.log('Order Detail', payload);
-  return postReq('http://localhost:3000/submit-order', payload);
+const serverHost = 'http://localhost:3000/';
+
+export function addToCart(payload) {
+  // console.log('Add To Cart Request');
+  // console.log('Item Detail', payload);
+  return postReq(serverHost + 'add-cart-record', payload);
+}
+
+export function loadCart(payload) {
+  // console.log('Load Cart Request');
+  // console.log('Cookie Detail', payload);
+  return postReq(serverHost + 'cart', payload);
 }

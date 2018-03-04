@@ -44,7 +44,7 @@ export default class BoardPicker extends Component {
   sendToServer(){
     this.props.submitOrder();
   }
-  
+
   onOpenModal() {
     this.setState({ modalOpen: true });
   };
@@ -63,7 +63,7 @@ export default class BoardPicker extends Component {
           <div style = {buttonContainerStyle}>
             <button style = {buttonStyle} onClick = { this.complete }>{this.state.completed ? 'edit':'done'}</button>
             {this.state.completed &&
-              <button style = {buttonStyle} onClick = {this.onOpenModal}> Add to Cart </button> }
+              <button style = {buttonStyle} onClick = {this.onOpenModal}> Add to Bag </button> }
           </div>
           <Picker firstRender={this.state.firstRender} open={!this.state.completed} handleChangeComplete={ this.handleChangeComplete }/>
         </div>

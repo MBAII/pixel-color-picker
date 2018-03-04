@@ -2,7 +2,7 @@
 
 import React, {Component} from 'react';
 import {animateScroll} from 'react-scroll';
-import copy from './copy';
+import Header from '../../interface/Header';
 
 export default class extends Component {
 
@@ -15,7 +15,10 @@ export default class extends Component {
 
   render () {
 		return (
-			<h1>HELLO WORLD ^_^</h1>
+			<main>
+				<Header />
+				<h1>HELLO WORLD ^_^</h1>
+			</main>
 		);
 	}
 };

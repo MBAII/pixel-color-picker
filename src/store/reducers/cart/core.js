@@ -1,8 +1,12 @@
 'use strict';
 
 import {Record, List} from 'immutable';
-import {addToCart} from './model';
+import {
+  preCart,
+  cart,
+} from './model';
 
 export const InitialState = Record({
-  addToCart: addToCart
+  preCart: preCart,
+  cart: cart
 });

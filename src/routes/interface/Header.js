@@ -1,11 +1,24 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
+import bagIcon from'../assets/bag.png';
 
 class Header extends Component {
 
   render() {
     return (
-      <div style={{textAlign:'center', fontFamily: 'SANS-SERIF'}}>
+      <div style={{
+        textAlign:'center',
+        fontFamily: 'SANS-SERIF',
+        borderBottomStyle: 'solid'
+      }}>
+        <Link to="/cart">
+          <img src={bagIcon} style={{
+            width: '25px',
+            position: 'fixed',
+            right: '20px',
+            top: '20px'
+          }}/>
+        </Link>
         <p style={{
           fontFamily: 'SANS-SERIF',
           color: '#4caf4f',
@@ -13,9 +26,9 @@ class Header extends Component {
           fontSize: '50px',
           margin: '0px'
         }}>mend</p>
-        <div style={{textAlign:'right'}}>
-          <Link to="/Home" style={menuItemStyle}>Home</Link>
-      		<Link to="/About" style={menuItemStyle}>About</Link>
+        <div style={{textAlign:'left'}}>
+          <Link to="/" style={menuItemStyle}>Home</Link>
+      		<Link to="/about" style={menuItemStyle}>About</Link>
         </div>
       </div>
     );

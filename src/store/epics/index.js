@@ -2,8 +2,8 @@
 
 import {combineEpics} from 'redux-observable';
 
-import order from './order';
+import cart from './cart';
 
 export default combineEpics(
-  order
+  cart,
 );

@@ -4,9 +4,13 @@ import keyMirror from 'fbjs/lib/keyMirror';
 
 export default keyMirror({
   UPDATE_PIXEL: null,
-  UPDATE_ADD_TO_CART: null,
+  UPDATE_PRE_CART: null,
 
-  SUBMIT_ORDER_PROCESS: null,
-  SUBMIT_ORDER_SUCCESS: null,
-  SUBMIT_ORDER_FAILURE: null,
+  ADD_TO_CART_REQUEST: null,
+  ADD_TO_CART_SUCCESS: null,
+  ADD_TO_CART_FAILURE: null,
+
+  LOAD_CART_REQUEST: null,
+  LOAD_CART_SUCCESS: null,
+  LOAD_CART_FAILURE: null,
 });

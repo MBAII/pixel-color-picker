@@ -3,7 +3,8 @@ import {List} from 'immutable';
 import * as core from './core';
 
 const {
-  UPDATE_ADD_TO_CART,
+  UPDATE_PRE_CART,
+  LOAD_CART_SUCCESS,
 } = require('../../actionTypes').default;
 
 const initialState = core.InitialState();
@@ -11,8 +12,11 @@ const initialState = core.InitialState();
 export default function (state = initialState, {type, payload}) {
   switch (type) {
 
-    case UPDATE_ADD_TO_CART:
-      return state.set('addToCart', List(payload));
+    case UPDATE_PRE_CART:
+      return state.set('preCart', List(payload));
+
+    case LOAD_CART_SUCCESS:
+      return state.set('cart', List(payload));
 
   };
   return state;

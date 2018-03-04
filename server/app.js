@@ -6,12 +6,12 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
 var index = require('./routes/index');
-var users = require('./routes/users');
+var cart = require('./routes/cart');
 
 //database
 var mongo = require('mongodb');
 var monk = require('monk');
-var db = monk('localhost:27017/order');
+var db = monk('localhost:27017/mend');
 
 var app = express();
 
@@ -32,7 +32,7 @@ app.use(function(req,res,next){
     next();
 });
 app.use('/', index);
-app.use('/users', users);
+app.use('/cart', cart);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

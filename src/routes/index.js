@@ -6,13 +6,14 @@ import {accessLevel} from '../lib/config';
 
 import Main from './scenes/main';
 import App from './scenes/app';
+import Cart from './scenes/cart';
 
 const Routes = () => (
 	<div>
 		<Switch>
 			<Route exact path="/" component={Main} />
-			<Route path="/Home" component={Main} />
-			<Route path="/About" component={App} />
+			<Route path="/about" component={App} />
+			<Route path="/cart" component={Cart} />
 		</Switch>
 	</div>
 );

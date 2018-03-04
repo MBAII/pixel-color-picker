@@ -1,9 +1,14 @@
 import React, { Component } from 'react';
 
 import plusIcon from'../../assets/plus.png';
+import addToBagIcon from'../../assets/addtobag.png';
 import removeIcon from'../../assets/remove.png';
 import Dropdown from 'react-dropdown'
 import 'react-dropdown/style.css'
+import Cookies from 'js-cookie';
+import {Link} from 'react-router-dom';
+
+
 const sizeOptions = [
   'XS', 'S', 'M', 'L', 'XL', 'XXL'
 ]
@@ -18,22 +23,32 @@ class Cart extends Component {
     this.state = {
       info: []
     };
+    this.addToCart = this.addToCart.bind(this);
     this.addRow = this.addRow.bind(this);
     this.renderRow = this.renderRow.bind(this);
     this.renderRows = this.renderRows.bind(this);
   }
-  
+
   componentWillMount(){
-    this.setState({info: this.props.addToCart});
+    this.setState({info: this.props.preCart});
   }
-  
-  componentDidUpdate(){
-    // this.props.updateAddToCart(this.state.info);
+
+  addToCart(){
+    const newItemCookieKey = Date.now();
+    var currentCartKeys = Cookies.get('mendShoppingCart')
+    if(!currentCartKeys){
+      currentCartKeys = [];
+    }else{
+      currentCartKeys = JSON.parse(currentCartKeys);
+    }
+    currentCartKeys.push(newItemCookieKey);
+    Cookies.set('mendShoppingCart', JSON.stringify(currentCartKeys));
+
+    this.props.addToCartRequest({cookieKey: newItemCookieKey});
   }
 
   addRow(){
-    this.props.updateAddToCart(this.props.addToCart.concat([{size: null,quantity: null}]));
-    // this.setState({info: this.state.info.concat([{size: null,quantity: null}])});
+    this.props.updatePreCart(this.props.preCart.concat([{size: null,quantity: null}]));
   }
 
   renderRow(row, i){
@@ -43,9 +58,9 @@ class Cart extends Component {
           <Dropdown
             options={sizeOptions}
             onChange={(v) => {
-              this.props.addToCart[i].size = v.value;
+              this.props.preCart[i].size = v.value;
             }}
-            value={this.props.addToCart[i].size}
+            value={this.props.preCart[i].size}
             placeholder="Select A Size"
           />
         </div>
@@ -53,9 +68,9 @@ class Cart extends Component {
           <Dropdown
             options={quantityOptions}
             onChange={(v) => {
-              this.props.addToCart[i].quantity = v.value;
+              this.props.preCart[i].quantity = v.value;
             }}
-            value={this.props.addToCart[i].quantity}
+            value={this.props.preCart[i].quantity}
             placeholder="Select Quantity"
           />
         </div>
@@ -64,7 +79,7 @@ class Cart extends Component {
           style={{width:'50%', marginBottom:'14px'}}
           src={removeIcon}
           onClick={() => {
-            this.props.updateAddToCart(this.props.addToCart.filter((o, index) => i !== index));
+            this.props.updatePreCart(this.props.preCart.filter((o, index) => i !== index));
           }}/>
         </div>
       </div>
@@ -73,7 +88,7 @@ class Cart extends Component {
 
   renderRows(){
     let rows = [];
-    this.props.addToCart.forEach((row, i) => {
+    this.props.preCart.forEach((row, i) => {
       rows.push(this.renderRow(row, i));
     });
     return rows;
@@ -83,16 +98,26 @@ class Cart extends Component {
     return (
       <div style={{width:'500px',textAlign:'left', fontFamily: 'SANS-SERIF'}}>
         <div style={{borderBottomStyle:'solid'}}>
-          <h1>Add To Cart</h1>
+          <h1>Add To Bag</h1>
         </div>
         {this.renderRows()}
         <div style={{borderTopStyle:'solid'}}>
-          <img style={{float:'right', margin:'5px', height:'30px'}} src={plusIcon} onClick={this.addRow}/>
+          <Link to="/cart">
+            <img style={bottomButtonStyle} src={addToBagIcon} onClick={this.addToCart}/>
+          </Link>
+          <img style={bottomButtonStyle} src={plusIcon} onClick={this.addRow}/>
         </div>
       </div>
     );
   }
 
+}
+
+const bottomButtonStyle = {
+  float:'right',
+  margin:'5px',
+  height:'30px',
+  marginTop: '15px',
 }
 
 const cellStyle = {
